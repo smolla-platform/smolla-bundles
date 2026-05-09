@@ -11,7 +11,7 @@ concurrency:
 jobs:
     deploy:
         name: deploy-staging
-        runs-on: [self-hosted, smolla-bundles]
+        runs-on: [self-hosted, smolla-platform-runner]
 
         steps:
             - name: Checkout
