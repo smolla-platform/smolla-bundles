@@ -1,0 +1,38 @@
+name: Deploy Production
+
+on:
+    push:
+        branches: [main]
+
+concurrency:
+    group: deploy-prod
+    cancel-in-progress: false
+
+jobs:
+    deploy:
+        name: deploy-prod
+        runs-on: [self-hosted, smolla-bundles]
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Log in to GHCR
+              run: echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+            - name: Build image
+              run: |
+                  docker build \
+                      --tag ghcr.io/adamsalisbury/smolla-bundles:latest \
+                      --tag ghcr.io/adamsalisbury/smolla-bundles:${{ github.sha }} \
+                      .
+
+            - name: Push image
+              run: |
+                  docker push ghcr.io/adamsalisbury/smolla-bundles:latest
+                  docker push ghcr.io/adamsalisbury/smolla-bundles:${{ github.sha }}
+
+            # Image is pushed to GHCR. Container launch is not yet wired up:
+            # the nginx sites-available config and docker-compose project for
+            # smolla-bundles are not in place. Once smolla-infra adds them, swap this
+            # comment for a call to ./deploy.sh prod.

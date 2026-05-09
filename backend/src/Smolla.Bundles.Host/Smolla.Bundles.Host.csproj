@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <RootNamespace>Smolla.Bundles.Host</RootNamespace>
+        <AssemblyName>Smolla.Bundles.Host</AssemblyName>
+        <UserSecretsId>smolla-bundles-host</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+        <PackageReference Include="Serilog.AspNetCore" />
+        <PackageReference Include="Serilog.Sinks.Console" />
+    </ItemGroup>
+
+</Project>

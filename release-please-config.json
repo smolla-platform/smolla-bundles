@@ -1,0 +1,24 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "release-type": "simple",
+  "include-v-in-tag": true,
+  "include-component-in-tag": false,
+  "bump-minor-pre-major": true,
+  "bump-patch-for-minor-pre-major": false,
+  "initial-version": "0.1.0",
+  "draft": false,
+  "prerelease": false,
+  "packages": {
+    ".": {
+      "package-name": "smolla-bundles",
+      "initial-version": "0.1.0",
+      "extra-files": [
+        {
+          "type": "xml",
+          "path": "backend/Directory.Build.props",
+          "xpath": "//Project/PropertyGroup/Version"
+        }
+      ]
+    }
+  }
+}
