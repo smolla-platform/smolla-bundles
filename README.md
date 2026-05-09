@@ -38,3 +38,4 @@ Managed by `release-please`; the canonical version lives in `version.txt` and is
 GNU Affero General Public License v3.0 — see [LICENSE](LICENSE).
 
 Copyright (c) 2026 Adam Salisbury.
+
